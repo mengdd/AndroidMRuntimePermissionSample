@@ -23,4 +23,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Send Request" />
+
+    <Button
+        android:id="@+id/read_contacts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Read Contacts" />
 </LinearLayout>

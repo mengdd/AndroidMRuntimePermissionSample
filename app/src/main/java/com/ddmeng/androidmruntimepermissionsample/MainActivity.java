@@ -37,6 +37,11 @@ public class MainActivity extends AppCompatActivity {
         NetworkUtils.sendRequest(TEST_URL);
     }
 
+    @OnClick(R.id.read_contacts)
+    void readContacts() {
+        ContactsUtils.readPhoneContacts(this);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

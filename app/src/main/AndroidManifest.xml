@@ -5,8 +5,8 @@
     <!--Normal Permissions-->
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <!--Dangerous Permissions-->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:allowBackup="true"
