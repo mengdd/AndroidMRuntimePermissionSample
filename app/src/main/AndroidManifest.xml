@@ -2,8 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ddmeng.androidmruntimepermissionsample">
 
+    <!--Normal Permissions-->
     <uses-permission android:name="android.permission.INTERNET" />
-    
+
+
+    <!--Dangerous Permissions-->
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
