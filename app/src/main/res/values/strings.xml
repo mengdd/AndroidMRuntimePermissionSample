@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">AndroidMRuntimePermissionSample</string>
     <string name="action_settings">Settings</string>
+
+    <string name="alert_dialog_ok">OK</string>
+    <string name="alert_dialog_cancel">Cancel</string>
+    <string name="hint_description_title">Can you allow Contacts permission?</string>
+    <string name="hint_description_why_we_need_the_permission">Hi, we really need the Contacts permissions. If permissions are not granted, some features will not work well. Can you allow it?</string>
 </resources>

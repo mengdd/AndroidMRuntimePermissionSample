@@ -1,6 +1,7 @@
 package com.ddmeng.androidmruntimepermissionsample;
 
 import android.Manifest;
+import android.app.DialogFragment;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -16,12 +17,17 @@ import android.view.View;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements HintDialogFragment.DialogFragmentCallback {
 
     private static final String TEST_URL = "http://www.cnblogs.com/mengdd/";
     private static final String DEBUG_TAG = "PermissionTest";
 
+    // this request code is used to distinguish system permission dialogs
     private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;
+
+
+    // this request code is used to distinguish normal dialogs
+    private static final int HINT_DIALOG_EXPLAIN_CALENDAR_PERMISSION_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +68,12 @@ public class MainActivity extends AppCompatActivity {
                 // this thread waiting for the user's response! After the user
                 // sees the explanation, try again to request the permission.
                 Log.i(DEBUG_TAG, "we should explain why we need this permission!");
-                //TODO show a explanation dialog
+                //show a explanation dialog
+
+                DialogFragment newFragment = HintDialogFragment.newInstance(R.string.hint_description_title,
+                        R.string.hint_description_why_we_need_the_permission,
+                        HINT_DIALOG_EXPLAIN_CALENDAR_PERMISSION_REQUEST_CODE);
+                newFragment.show(getFragmentManager(), HintDialogFragment.class.getSimpleName());
             } else {
 
                 // No explanation needed, we can request the permission.
@@ -77,6 +88,22 @@ public class MainActivity extends AppCompatActivity {
                 // result of the request.
             }
         }
+    }
+
+    @Override
+    public void doPositiveClick(int requestCode) {
+        if (HINT_DIALOG_EXPLAIN_CALENDAR_PERMISSION_REQUEST_CODE == requestCode) {
+            // Confirmed from the explanation, we can request the permission.
+            Log.i(DEBUG_TAG, "==request the permission==");
+            ActivityCompat.requestPermissions(MainActivity.this,
+                    new String[]{Manifest.permission.READ_CONTACTS},
+                    MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+        }
+    }
+
+    @Override
+    public void doNegativeClick(int requestCode) {
+
     }
 
     @Override
