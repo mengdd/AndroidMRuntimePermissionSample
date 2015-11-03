@@ -39,6 +39,14 @@ public class MainActivity extends AppCompatActivity implements HintDialogFragmen
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i(DEBUG_TAG, "onResume");
+        // if user select "Do not ask again", onResume() will be called every time when request permission
+        // Reason: although the system dialog is not shown, it is dismissed by system
+    }
+
     @OnClick(R.id.fab)
     void onFabClicked(View view) {
         Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
